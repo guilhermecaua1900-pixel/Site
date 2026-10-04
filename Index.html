@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robux Rewards</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0b0e17;
+  color: #fff;
+  min-height: 100vh;
+}
+
+header {
+  height: 70px;
+  background: #121725;
+  border-bottom: 1px solid #252c3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #9d78ff;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+  padding: 35px 18px;
+}
+
+.tag {
+  background: #211b3c;
+  color: #b9a4ff;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: table;
+  margin: 0 auto 18px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 29px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #a2a9bb;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.option {
+  background: #151b2b;
+  border: 2px solid #272f43;
+  border-radius: 15px;
+  min-height: 145px;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+  padding: 20px 10px;
+}
+
+.option:hover {
+  transform: translateY(-3px);
+  border-color: #8462e9;
+  background: #1c2340;
+}
+
+.option.selected {
+  border-color: #a184ff;
+  background: #211b3c;
+  box-shadow: 0 0 20px #8462e933;
+}
+
+.coin {
+  width: 43px;
+  height: 43px;
+  margin: 0 auto 12px;
+  background: linear-gradient(145deg, #b9a0ff, #7650d7);
+  color: #17102b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.amount {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.unit {
+  color: #9da7bd;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.notice {
+  background: #151b2b;
+  border: 1px solid #29334a;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 22px;
+  color: #aab3c7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.continue {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  padding: 17px;
+  border-radius: 12px;
+  background: #7855dc;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.continue:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.continue:not(:disabled):active {
+  transform: scale(.98);
+}
+
+.confirmation {
+  display: none;
+  background: #151b2b;
+  border: 1px solid #7855dc;
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 24px;
+  text-align: center;
+  animation: appear .3s ease;
+}
+
+.confirmation h2 {
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.confirmation p {
+  font-size: 14px;
+  color: #b4bdd0;
+  line-height: 1.6;
+}
+
+.confirmation .continue {
+  margin-top: 15px;
+}
+
+.back {
+  background: #29334a;
+}
+
+footer {
+  color: #626c83;
+  text-align: center;
+  font-size: 11px;
+  padding: 25px 15px;
+  line-height: 1.5;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: 25px; }
+  .amount { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ROBUX <span>REWARDS</span></div>
+</header>
+
+<main class="container">
+
+  <div class="tag">SELEÇÃO DE QUANTIDADE</div>
+
+  <h1>Escolha sua opção</h1>
+
+  <p class="subtitle">
+    Selecione uma das opções abaixo para continuar.
+  </p>
+
+  <div class="grid">
+
+    <button class="option" onclick="selectOption(this, 100)">
+      <div class="coin">R</div>
+      <div class="amount">100</div>
+      <div class="unit">Robux</div>
+    </button>
+
+    <button class="option" onclick="selectOption(this, 400)">
+      <div class="coin">R</div>
+      <div class="amount">400</div>
+      <div class="unit">Robux</div>
+    </button>
+
+    <button class="option" onclick="selectOption(this, 800)">
+      <div class="coin">R</div>
+      <div class="amount">800</div>
+      <div class="unit">Robux</div>
+    </button>
+
+    <button class="option" onclick="selectOption(this, 1700)">
+      <div class="coin">R</div>
+      <div class="amount">1.700</div>
+      <div class="unit">Robux</div>
+    </button>
+
+    <button class="option" onclick="selectOption(this, 4500)">
+      <div class="coin">R</div>
+      <div class="amount">4.500</div>
+      <div class="unit">Robux</div>
+    </button>
+
+    <button class="option" onclick="selectOption(this, 10000)">
+      <div class="coin">R</div>
+      <div class="amount">10.000</div>
+      <div class="unit">Robux</div>
+    </button>
+
+  </div>
+
+  <div class="notice">
+    Nosso site foi desenvolvido para oferecer uma experiência segura e confiável, garantindo transparência e praticidade durante todo o processo de compra.
+  </div>
+
+  <button
+    id="continue"
+    class="continue"
+    disabled
+    onclick="showConfirmation()">
+    Selecione uma opção
+  </button>
+
+  <section id="confirmation" class="confirmation">
+    <h2>Confirmar seleção</h2>
+
+    <p id="selectedText"></p>
+
+    <p style="margin-top:12px">
+      Ao confirmar, você será direcionado
+      para a nossa comunidade do tiktok iremos confirmar seus robux.
+    </p>
+
+    <button class="continue" onclick="goToLink()">
+      Confirmar
+    </button>
+
+    <button class="continue back"
+      onclick="cancelConfirmation()">
+      Voltar
+    </button>
+  </section>
+
+</main>
+
+<footer>
+  FORNECEDORA DE ROBUX | ATENDIMENTO
+Olá! Seja bem-vindo(a)!
+Trabalho com a venda de Robux, oferecendo diferentes quantidades e opções para atender às suas necessidades.
+Informações:
+Disponibilidade de diferentes quantidades de Robux;
+Atendimento individualizado;
+Informações sobre valores e condições de entrega.
+Para consultar os preços e obter mais informações, entre em contato através deste link https://www.tiktok.com/d/4/ZS9DygRNuBUrp-tdyJO/
+</footer>
+
+<script>
+let selectedAmount = null;
+
+// Selecione uma quantidade
+function selectOption(button, amount) {
+  document.querySelectorAll(".option").forEach(option => {
+    option.classList.remove("selected");
+  });
+
+  button.classList.add("selected");
+  selectedAmount = amount;
+
+  const continueButton =
+    document.getElementById("continue");
+
+  continueButton.disabled = false;
+  continueButton.textContent = "Continuar";
+
+  document.getElementById("confirmation").style.display =
+    "none";
+}
+
+// Mostrar a confirmação
+function showConfirmation() {
+  if (selectedAmount === null) return;
+
+  document.getElementById("selectedText").textContent =
+    "Opção selecionada: " +
+    selectedAmount.toLocaleString("pt-BR") +
+    " Robux.";
+
+  const confirmation =
+    document.getElementById("confirmation");
+
+  confirmation.style.display = "block";
+
+  confirmation.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+// Voltar à seleção
+function cancelConfirmation() {
+  document.getElementById("confirmation").style.display =
+    "none";
+}
+
+// Link externo
+function goToLink() {
+  window.location.href =
+    "https://www.tiktok.com/d/4/ZS9DygRNuBUrp-tdyJO/";
+  }
+</script>
+
+</body>
+</html>
